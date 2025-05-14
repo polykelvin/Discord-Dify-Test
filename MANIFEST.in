@@ -1,0 +1,3 @@
+include README.md
+include requirements.txt
+include discord_tools_dify/manifest.json

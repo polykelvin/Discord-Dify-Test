@@ -7,6 +7,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Install the package in development mode
+RUN pip install -e .
+
 EXPOSE 5000
 
-CMD ["python", "server.py"]
+CMD ["python", "-m", "discord_tools_dify"]

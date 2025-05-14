@@ -1,7 +1,7 @@
 import unittest
 import json
 from unittest.mock import patch, MagicMock
-from server import app
+from discord_tools_dify.server import app
 
 class TestDiscordToolsPlugin(unittest.TestCase):
     def setUp(self):
@@ -20,7 +20,7 @@ class TestDiscordToolsPlugin(unittest.TestCase):
             data = json.loads(response.data)
             self.assertEqual(data['name'], 'discord_tools')
             
-    @patch('server.DiscordWebhook')
+    @patch('discord_tools_dify.server.DiscordWebhook')
     def test_send_message_success(self, mock_webhook):
         # Mock the webhook execution response
         mock_response = MagicMock()
@@ -42,7 +42,7 @@ class TestDiscordToolsPlugin(unittest.TestCase):
         self.assertTrue(data['success'])
         self.assertEqual(data['message'], 'Message sent successfully')
         
-    @patch('server.DiscordWebhook')
+    @patch('discord_tools_dify.server.DiscordWebhook')
     def test_send_message_failure(self, mock_webhook):
         # Mock the webhook execution response for failure
         mock_response = MagicMock()
@@ -77,7 +77,7 @@ class TestDiscordToolsPlugin(unittest.TestCase):
         data = json.loads(response.data)
         self.assertFalse(data['success'])
         
-    @patch('server.requests.get')
+    @patch('discord_tools_dify.server.requests.get')
     def test_read_messages_success(self, mock_get):
         # Mock the Discord API response
         mock_response = MagicMock()
@@ -112,7 +112,7 @@ class TestDiscordToolsPlugin(unittest.TestCase):
         self.assertEqual(len(data['messages']), 1)
         self.assertEqual(data['messages'][0]['content'], 'Hello world')
         
-    @patch('server.requests.get')
+    @patch('discord_tools_dify.server.requests.get')
     def test_read_messages_failure(self, mock_get):
         # Mock the Discord API response for failure
         mock_response = MagicMock()

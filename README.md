@@ -18,6 +18,32 @@ This plugin allows Dify users to interact with Discord by sending messages to Di
 
 ### Installation
 
+#### From GitHub Packages
+
+To install the package from GitHub Packages, add the following to your `~/.pip/pip.conf` file:
+
+```
+[global]
+index-url = https://pypi.org/simple
+extra-index-url = https://maven.pkg.github.com/OWNER/discord-tools-dify
+```
+
+Replace `OWNER` with the GitHub username or organization name that owns the repository.
+
+Then, authenticate with GitHub Packages:
+
+```bash
+export GITHUB_TOKEN=your_personal_access_token
+```
+
+Finally, install the package:
+
+```bash
+pip install discord-tools-dify
+```
+
+#### From Source
+
 1. Clone this repository
 2. Install dependencies:
    ```
@@ -74,3 +100,10 @@ You can also run this plugin using Docker:
 docker build -t discord-tools-plugin .
 docker run -p 5000:5000 discord-tools-plugin
 ```
+
+## Publishing to GitHub Packages
+
+To publish this package to GitHub Packages:
+
+1. Create a new release on GitHub
+2. The GitHub Actions workflow will automatically build and publish the package to GitHub Packages
