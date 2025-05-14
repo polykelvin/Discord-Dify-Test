@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Tools Plugin for Dify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #5865F2;
+            border-bottom: 2px solid #5865F2;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #5865F2;
+            margin-top: 30px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: monospace;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .feature {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #5865F2;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discord Tools Plugin for Dify</h1>
+        <p>This plugin allows Dify users to interact with Discord by sending messages to Discord channels and reading messages from Discord channels.</p>
+        
+        <h2>Features</h2>
+        <div class="feature">
+            <h3>Send Discord Message</h3>
+            <p>Send messages to Discord channels using webhook URLs</p>
+            <pre><code>Parameters:
+- webhook_url (required): Discord webhook URL for the channel
+- message (required): Message content to send to Discord
+- title (optional): Title for the message embed
+- color (optional): Hex color code for the embed (without #)</code></pre>
+        </div>
+        
+        <div class="feature">
+            <h3>Read Discord Messages</h3>
+            <p>Read messages from Discord channels using a bot token and channel ID</p>
+            <pre><code>Parameters:
+- bot_token (required): Discord bot token with permissions to read messages
+- channel_id (required): Discord channel ID to read messages from
+- limit (optional): Maximum number of messages to retrieve (default: 10)</code></pre>
+        </div>
+        
+        <h2>Setup Instructions</h2>
+        <p>To use this plugin with Dify:</p>
+        <ol>
+            <li>Deploy this plugin to a server accessible by your Dify instance</li>
+            <li>Add the plugin to your Dify instance using the plugin URL</li>
+            <li>Configure the plugin with your Discord credentials</li>
+            <li>Use the tools in your Dify applications</li>
+        </ol>
+        
+        <h2>API Documentation</h2>
+        <p>The plugin exposes the following endpoints:</p>
+        <ul>
+            <li><code>/</code> - Health check endpoint</li>
+            <li><code>/manifest</code> - Plugin manifest for Dify</li>
+            <li><code>/api/send-message</code> - Send message to Discord</li>
+            <li><code>/api/read-messages</code> - Read messages from Discord</li>
+        </ul>
+        
+        <h2>Discord Bot Setup</h2>
+        <p>To use the "Read Discord Messages" feature, you need to create a Discord bot:</p>
+        <ol>
+            <li>Go to the <a href="https://discord.com/developers/applications">Discord Developer Portal</a></li>
+            <li>Create a new application</li>
+            <li>Navigate to the "Bot" tab and create a bot</li>
+            <li>Enable the "Message Content Intent" under Privileged Gateway Intents</li>
+            <li>Copy the bot token for use with this plugin</li>
+            <li>Invite the bot to your server using the OAuth2 URL generator with the "bot" scope and "Read Messages" permission</li>
+        </ol>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{
+  "api_version": "v1",
+  "name": "discord_tools",
+  "display_name": "Discord Tools",
+  "description": "A plugin that allows users to send messages to Discord and read messages from Discord channels",
+  "logo": "https://cdn.discordapp.com/attachments/1107539405029203979/1107539546322071552/discord-logo.png",
+  "version": "1.0.0",
+  "author": "Dify Plugin Developer",
+  "contact_email": "contact@example.com",
+  "identifiers": ["discord", "messaging", "communication"],
+  "runtime": {
+    "type": "http",
+    "endpoint": "http://localhost:5000"
+  },
+  "tools": [
+    {
+      "name": "send_discord_message",
+      "display_name": "Send Discord Message",
+      "description": "Send a message to a Discord channel using a webhook URL",
+      "parameters": {
+        "type": "object",
+        "required": ["webhook_url", "message"],
+        "properties": {
+          "webhook_url": {
+            "type": "string",
+            "description": "Discord webhook URL for the channel"
+          },
+          "message": {
+            "type": "string",
+            "description": "Message content to send to Discord"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title for the message embed (optional)"
+          },
+          "color": {
+            "type": "string",
+            "description": "Hex color code for the embed (optional, without #)"
+          }
+        }
+      },
+      "http": {
+        "method": "POST",
+        "url": "/api/send-message"
+      }
+    },
+    {
+      "name": "read_discord_messages",
+      "display_name": "Read Discord Messages",
+      "description": "Read messages from a Discord channel using bot token and channel ID",
+      "parameters": {
+        "type": "object",
+        "required": ["bot_token", "channel_id"],
+        "properties": {
+          "bot_token": {
+            "type": "string",
+            "description": "Discord bot token with permissions to read messages"
+          },
+          "channel_id": {
+            "type": "string",
+            "description": "Discord channel ID to read messages from"
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Maximum number of messages to retrieve (optional, default: 10)"
+          }
+        }
+      },
+      "http": {
+        "method": "POST",
+        "url": "/api/read-messages"
+      }
+    }
+  ]
+}
